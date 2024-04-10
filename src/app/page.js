@@ -1,11 +1,14 @@
-import Image from "next/image";
+import DataTable from "@/components/DataTable";
 
 export default function Home() {
+  const data = [
+    { id: 1, label: "Windows" },
+    { id: 2, label: "Linux" },
+  ];
+
   return (
     <main>
-      <table>
-        
-      </table>
+      <DataTable data={data} />
     </main>
   );
 }
