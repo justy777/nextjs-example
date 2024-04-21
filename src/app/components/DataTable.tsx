@@ -1,6 +1,4 @@
-import React from "react";
-
-const DataTable = ({ data }) => {
+export default function DataTable({ data }: { data: object[] }) {
   const headers = Object.keys(data[0]);
   const rows = data.map((item) => Object.values(item));
 
@@ -24,6 +22,4 @@ const DataTable = ({ data }) => {
       </tbody>
     </table>
   );
-};
-
-export default DataTable;
+}
