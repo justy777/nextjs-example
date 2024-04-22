@@ -1,5 +1,5 @@
 import DataTable from "./components/DataTable";
-import data from './data.json';
+import data from "./data.json";
 
 export default function Home() {
 

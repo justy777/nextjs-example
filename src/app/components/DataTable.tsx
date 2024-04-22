@@ -1,6 +1,20 @@
-export default function DataTable({ data }: { data: object[] }) {
-  const headers = Object.keys(data[0]);
-  const rows = data.map((item) => Object.values(item));
+"use client";
+
+import { useState } from "react";
+
+interface Row {
+  id: number;
+  [x: string | number | symbol]: any;
+}
+
+export default function DataTable({ data }: { data: Row[] }) {
+  const [rows, setRows] = useState(data);
+
+  const headers = Object.keys(rows[0]);
+
+  function handleDelete(rowId: number) {
+    setRows(rows.filter((row) => row.id !== rowId));
+  }
 
   return (
     <table>
@@ -12,11 +26,14 @@ export default function DataTable({ data }: { data: object[] }) {
         </tr>
       </thead>
       <tbody>
-        {rows.map((row, index) => (
-          <tr key={index}>
-            {row.map((cell, index) => (
-              <td key={index}>{cell}</td>
+        {rows.map((row) => (
+          <tr key={row.id}>
+            {Object.values(row).map((value, index) => (
+              <td key={index}>{value}</td>
             ))}
+            <td>
+              <button onClick={() => handleDelete(row.id)}>Delete</button>
+            </td>
           </tr>
         ))}
       </tbody>
