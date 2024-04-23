@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import DeleteDialog from "./DeleteDialog";
 
 interface Row {
   id: number;
@@ -20,8 +21,8 @@ export default function DataTable({ data }: { data: Row[] }) {
     <table>
       <thead>
         <tr>
-          {headers.map((header) => (
-            <th key={header}>{header}</th>
+          {headers.map((header, index) => (
+            <th key={index}>{header}</th>
           ))}
         </tr>
       </thead>
@@ -32,7 +33,7 @@ export default function DataTable({ data }: { data: Row[] }) {
               <td key={index}>{value}</td>
             ))}
             <td>
-              <button onClick={() => handleDelete(row.id)}>Delete</button>
+              <DeleteDialog onConfirm={() => handleDelete(row.id)} />
             </td>
           </tr>
         ))}
