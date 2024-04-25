@@ -1,7 +1,12 @@
 .modal {
+    /* Centers modal in window */
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    /* Adds contrast between modal and background */
     background-color: white;
+    border: 1px solid black;
+    padding: 0.5rem;
 }
