@@ -22,6 +22,9 @@
     /* Adds contrast to the header */
     background: black;
     color: white;
+
+    /* Prevent headers containing line breaks */
+    white-space: nowrap;
 }
 
 /* Highlights row on hover */

@@ -1,20 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import styles from "./DataTable.module.css";
+
+import { Identity, TableRow, TableProps } from "../types/table";
+
+import styles from "./Table.module.css";
 import DeleteDialog from "./DeleteDialog";
 
-interface Row {
-  id: number;
-  [x: string | number | symbol]: any;
-}
-
-export default function DataTable({ data }: { data: Row[] }) {
+export default function Table<T extends TableRow>({ data, columns }: TableProps<T>) {
   const [rows, setRows] = useState(data);
 
-  const headers = Object.keys(rows[0]);
-
-  function handleDelete(rowId: number) {
+  function handleDelete(rowId: Identity) {
     setRows(rows.filter((row) => row.id !== rowId));
   }
 
@@ -22,8 +18,8 @@ export default function DataTable({ data }: { data: Row[] }) {
     <table className={styles.table}>
       <thead>
         <tr className={styles.tr}>
-          {headers.map((header, index) => (
-            <th className={styles.th} key={index}>{header}</th>
+          {columns.map((column, index) => (
+            <th className={styles.th} key={index}>{column.label}</th>
           ))}
           <th className={styles.th}></th>
         </tr>
@@ -31,8 +27,8 @@ export default function DataTable({ data }: { data: Row[] }) {
       <tbody>
         {rows.map((row) => (
           <tr className={styles.tr} key={row.id}>
-            {Object.values(row).map((value, index) => (
-              <td className={styles.td} key={index}>{value}</td>
+            {columns.map((column, index) => (
+              <td className={styles.td} key={index}>{column.renderCell(row)}</td>
             ))}
             <td className={styles.td}>
               <DeleteDialog onConfirm={() => handleDelete(row.id)} />
