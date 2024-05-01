@@ -7,14 +7,14 @@
     border: 1px solid #ccc;
 }
 
-.td, .th {
+.table-data, .table-header {
     border-bottom: 1px solid #ccc;
     padding: 0.25rem;
     text-align: left;
     vertical-align: middle;
 }
 
-.th {
+.table-header {
     /* Makes the header stick when scrolling */
     position: sticky;
     top: 0;
@@ -28,6 +28,6 @@
 }
 
 /* Highlights row on hover */
-tbody .tr:hover {
+tbody .table-row:hover {
     background: #eee;
 }

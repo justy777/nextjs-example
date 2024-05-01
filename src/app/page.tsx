@@ -46,10 +46,6 @@ export default async function Home() {
     {
       label: "Phone",
       renderCell: <T extends TableRow>(item: T) => item.phone,
-    },
-    {
-      label: "Address",
-      renderCell: <T extends TableRow>(item: T) => item.address,
     }
   ];
 

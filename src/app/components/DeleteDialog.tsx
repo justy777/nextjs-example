@@ -14,7 +14,7 @@ export default function DeleteDialog({ onConfirm }: ConfirmationModalProps) {
             </AlertDialog.Trigger>
             <AlertDialog.Portal>
                 <AlertDialog.Overlay/>
-                <AlertDialog.Content className={styles.modal}>
+                <AlertDialog.Content className={styles["modal"]}>
                     <AlertDialog.Title>Delete</AlertDialog.Title>
                     <AlertDialog.Description>
                         Are you sure you want to delete? This action cannot be undone.

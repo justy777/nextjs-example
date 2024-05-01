@@ -15,22 +15,22 @@ export default function Table<T extends TableRow>({ data, columns }: TableProps<
   }
 
   return (
-    <table className={styles.table}>
+    <table className={styles["table"]}>
       <thead>
-        <tr className={styles.tr}>
+        <tr className={styles["table-row"]}>
           {columns.map((column, index) => (
-            <th className={styles.th} key={index}>{column.label}</th>
+            <th className={styles["table-header"]} key={index}>{column.label}</th>
           ))}
-          <th className={styles.th}></th>
+          <th className={styles["table-header"]}></th>
         </tr>
       </thead>
       <tbody>
         {rows.map((row) => (
-          <tr className={styles.tr} key={row.id}>
+          <tr className={styles["table-row"]} key={row.id}>
             {columns.map((column, index) => (
-              <td className={styles.td} key={index}>{column.renderCell(row)}</td>
+              <td className={styles["table-data"]} key={index}>{column.renderCell(row)}</td>
             ))}
-            <td className={styles.td}>
+            <td className={styles["table-data"]}>
               <DeleteDialog onConfirm={() => handleDelete(row.id)} />
             </td>
           </tr>
